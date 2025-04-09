@@ -1,10 +1,16 @@
 package model;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Entity
+@Table
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode
 public class AppUser {
 
     @Id
@@ -15,7 +21,7 @@ public class AppUser {
     private String username;
 
     @Column(nullable = false)
-    private String password;
+    private String password; // Consider hashing this before saving
 
     @Column(nullable = false)
     private LocalDate regDate;
@@ -23,14 +29,13 @@ public class AppUser {
     @OneToOne(mappedBy = "appUser", cascade = CascadeType.ALL)
     private Details userDetails;
 
-    // Constructors, getters, and setters
-    public AppUser() {}
-
-    public AppUser(String username, String password, LocalDate regDate) {
-        this.username = username;
-        this.password = password;
-        this.regDate = regDate;
+    @Override
+    public String toString() {
+        return "AppUser{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", regDate=" + regDate +
+                ", userDetails=" + userDetails +
+                '}';
     }
-
-    // Getters and Setters
 }
