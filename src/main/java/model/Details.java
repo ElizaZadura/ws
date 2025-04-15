@@ -21,7 +21,7 @@ public class Details {
     private String name;
 
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE}, fetch = FetchType.EAGER)
-    @JoinColumn(name = "app_user_id", unique = true, nullable = false)
+    @JoinColumn(unique = true, nullable = false)
 
     private AppUser appUser;
 
