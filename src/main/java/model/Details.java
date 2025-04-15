@@ -3,39 +3,31 @@ package model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
-import java.util.Objects;
-
-@Entity
-@Table(name = "details")
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
-public class Details {
 
+@Entity
+public class Details {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, unique = true)
     private Long id;
 
-    private String name;
-    private LocalDate birthDate;
-
-    @Column(unique = true, nullable = false)
+    @Column
     private String email;
 
-    @OneToOne
-    @JoinColumn(name = "app_user_id")
+    @Column(nullable = false)
+    private String name;
+
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE}, fetch = FetchType.EAGER)
+    @JoinColumn(name = "app_user_id", unique = true, nullable = false)
+
     private AppUser appUser;
 
-    @Override
-    public String toString() {
-        return "Details{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", birthDate=" + birthDate +
-                ", email='" + email + '\'' +
-                '}';
+    public Details(String email, String name) {
+        this.email = email;
+        this.name = name;
     }
+
 }
