@@ -1,5 +1,7 @@
-package model;
+package com.user.ws.model;
 
+import com.user.ws.ws.model.AppUser;
+import com.user.ws.ws.model.Details;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -27,4 +29,4 @@ public class DetailsTest {
         assertThat(details.getAppUser()).isEqualTo(appUser);
         assertThat(appUser.getUserDetails()).isEqualTo(details);
     }
-}
+} 

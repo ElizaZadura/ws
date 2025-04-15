@@ -1,12 +1,13 @@
-package service;
+package com.user.ws.service;
 
-import model.AppUser;
+import com.user.ws.ws.model.AppUser;
+import com.user.ws.ws.repository.AppUserRepository;
+import com.user.ws.ws.service.AppUserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import repository.AppUserRepository;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -76,4 +77,4 @@ public class AppUserServiceTest {
 
         verify(appUserRepository, times(1)).deleteById(1L);
     }
-}
+} 

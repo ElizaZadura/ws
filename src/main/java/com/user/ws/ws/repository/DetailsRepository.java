@@ -1,6 +1,6 @@
-package repository;
+package com.user.ws.ws.repository;
 
-import model.Details;
+import com.user.ws.ws.model.Details;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

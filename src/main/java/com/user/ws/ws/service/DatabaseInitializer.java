@@ -1,7 +1,7 @@
-package service;
+package com.user.ws.ws.service;
 
-import model.AppUser;
-import model.Details;
+import com.user.ws.ws.model.AppUser;
+import com.user.ws.ws.model.Details;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -10,7 +10,6 @@ import java.time.LocalDate;
 
 @Component
 public class DatabaseInitializer implements CommandLineRunner {
-
     private final AppUserService appUserService;
 
     @Autowired
@@ -20,7 +19,6 @@ public class DatabaseInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // Create and save the first AppUser with Details
         AppUser user1 = new AppUser();
         user1.setUsername("user1");
         user1.setPassword("password1");
@@ -31,11 +29,10 @@ public class DatabaseInitializer implements CommandLineRunner {
         details1.setName("User One");
 
         user1.setUserDetails(details1);
-        details1.setAppUser(user1); // Set back-reference
+        details1.setAppUser(user1);
 
-        appUserService.createAppUser(user1); // Save user1
+        appUserService.createAppUser(user1);
 
-        // Create and save the second AppUser with Details
         AppUser user2 = new AppUser();
         user2.setUsername("user2");
         user2.setPassword("password2");
@@ -46,11 +43,10 @@ public class DatabaseInitializer implements CommandLineRunner {
         details2.setName("User Two");
 
         user2.setUserDetails(details2);
-        details2.setAppUser(user2); // Set back-reference
+        details2.setAppUser(user2);
 
-        appUserService.createAppUser(user2); // Save user2
+        appUserService.createAppUser(user2);
 
-        // Output to console for confirmation
         System.out.println("Initialized database with sample users.");
     }
 }

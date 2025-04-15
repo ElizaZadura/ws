@@ -1,9 +1,9 @@
-package service;
+package com.user.ws.ws.service;
 
-import model.AppUser;
+import com.user.ws.ws.model.AppUser;
+import com.user.ws.ws.repository.AppUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.AppUserRepository;
 
 import java.util.List;
 import java.util.Optional;
